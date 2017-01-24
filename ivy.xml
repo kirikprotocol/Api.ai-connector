@@ -1,5 +1,5 @@
 <ivy-module version="2.0">
-  <info organisation="mobi.eyeline.mobilizer" module="apiai"/>
+  <info organisation="mobi.eyeline.mobilizer" module="sads-apiai"/>
   <dependencies>
     <dependency org="mobi.eyeline.mobilizer" name="sads-utils" rev="[0.31,)" changing="true" transitive="true"/>
     <dependency org="mobi.eyeline.mobilizer" name="sads-core" rev="[0.37,)" changing="true"/>

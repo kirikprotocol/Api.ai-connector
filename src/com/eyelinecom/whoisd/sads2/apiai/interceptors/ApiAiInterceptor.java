@@ -106,6 +106,7 @@ public class ApiAiInterceptor extends BlankInterceptor implements Initable{
                     if (complete) {
                         String action = result.getAction();
                         if (StringUtils.isNotBlank(action) && UrlUtils.isAbsoluteUrl(action)) {
+                            request.getParameters().putAll(UrlUtils.getParametersMap(action));
                             request.setResourceURI(action);
                         } else {
                             request.setResourceURI(InitUtils.getString(CONF_API_AI_PAGE, request.getResourceURI(), request.getServiceScenario().getAttributes()));

@@ -1,17 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%><?xml version="1.0" encoding="UTF-8"?>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
-<%@ page import="com.eyelinecom.whoisd.sads2.apiai.model.types.Response" %>
 <%@ page import="com.eyelinecom.whoisd.sads2.apiai.utils.MarshalUtils" %>
-<%@ page import="com.eyelinecom.whoisd.sads2.apiai.model.types.Fulfillment" %>
 <%@ page import="com.eyelinecom.whoisd.sads2.common.UrlUtils" %>
 <%@ page import="com.eyelinecom.whoisd.sads2.common.XMLUtils" %>
-<%@ page import="com.eyelinecom.whoisd.sads2.apiai.model.types.Entity" %>
-<%@ page import="com.eyelinecom.whoisd.sads2.apiai.model.types.Result" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="com.eyelinecom.whoisd.sads2.common.Loader" %>
 <%@ page import="com.eyelinecom.whoisd.sads2.common.HttpDataLoader" %>
 <%@ page import="com.eyelinecom.whoisd.sads2.apiai.model.AiApi" %>
 <%@ page import="java.net.URLEncoder" %>
+<%@ page import="com.eyelinecom.whoisd.sads2.apiai.model.types.*" %>
+<%@ page import="java.util.List" %>
 <page version="2.0">
     <%!
         Loader<Loader.Entity> loader = new HttpDataLoader();
@@ -24,6 +22,10 @@
         backPage = XMLUtils.forXML(backPage);
 
         boolean needEntityList = false;
+	String lang = request.getParameter("lang");
+        if (StringUtils.isBlank(lang)) {
+		lang = "en";
+	}
         Entity selectEntity = null;
 
         String answer = "";
@@ -41,14 +43,22 @@
                     if (params!=null) {
                         for (Map.Entry<String,Object> param: params.entrySet()) {
                             if ("".equals(param.getValue())) {
-                                AiApi api = new AiApi(loader, apiToken);
-                                try {
-                                    selectEntity = api.getEntity(param.getKey());
-                                } catch (Exception e) {
-                                    selectEntity = null;
-                                }
-                                if (selectEntity!=null) {
-                                    needEntityList = true;
+                                List<Context> ctxs = result.getContexts();
+                                for(Context ctx: ctxs) {
+                                    //we trying to find context with name ends with parameter
+                                    //it is need to check what exactly parameters we asked
+                                    if (ctx.getName().endsWith(param.getKey())) {
+                                        AiApi api = new AiApi(loader, apiToken);
+                                        try {
+                                            selectEntity = api.getEntity(param.getKey());
+                                        } catch (Exception e) {
+                                            selectEntity = null;
+                                        }
+                                        if (selectEntity!=null) {
+                                            needEntityList = true;
+                                        }
+                                        break;
+                                    }
                                 }
                             }
                         }
@@ -56,10 +66,18 @@
                 }
             }
         } else {
-            answer = "API отвечает статусом "+resp.getStatus().getCode()+" ("+resp.getStatus().getErrorDetails()+"). "+"Попробуйте еще раз. Сюда надо встроить либо поиск по порталу МТС, либо отправку этих данных оператору, который свяжется с вами.";
+	    if (lang.equals("ru")) {
+            	answer = "Попробуйте еще раз";
+            } else {
+            	answer = "Please try again";
+	    }
         }
         if (StringUtils.isBlank(answer)) {
-            answer = "Попробуйте еще раз. От API пришел успешный пустой ответ, что это значит - я не знаю.";
+	    if (lang.equals("ru")) {
+            	answer = "Попробуйте еще раз";
+            } else {
+            	answer = "Please try again";
+	    }
         }
     %>
       <div>
@@ -71,9 +89,15 @@
       <navigation id="submit">
         <link accesskey="1" pageId="resp.jsp">Ok</link>
       </navigation -->
+      <% if (lang.equals("ru")) { %>
       <navigation>
         <link accesskey="0" pageId="<%=backPage%>">Назад</link>
       </navigation>
+      <% } else { %>
+      <navigation>
+        <link accesskey="0" pageId="<%=backPage%>">Back</link>
+      </navigation>
+      <% } %>
 
     <%if (needEntityList && selectEntity!=null) { %>
     <navigation>

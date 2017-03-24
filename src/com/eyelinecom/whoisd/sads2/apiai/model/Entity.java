@@ -1,4 +1,4 @@
-package com.eyelinecom.whoisd.sads2.apiai.model.types;
+package com.eyelinecom.whoisd.sads2.apiai.model;
 
 import java.util.Arrays;
 import java.util.List;

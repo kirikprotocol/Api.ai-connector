@@ -1,4 +1,4 @@
-package com.eyelinecom.whoisd.sads2.apiai.model.types;
+package com.eyelinecom.whoisd.sads2.apiai.model;
 
 /**
  * Created by jeck on 15/04/16.

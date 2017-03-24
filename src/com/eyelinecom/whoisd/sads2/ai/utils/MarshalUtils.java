@@ -1,4 +1,4 @@
-package com.eyelinecom.whoisd.sads2.apiai.utils;
+package com.eyelinecom.whoisd.sads2.ai.utils;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;

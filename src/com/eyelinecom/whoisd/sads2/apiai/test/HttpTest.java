@@ -1,13 +1,11 @@
 package com.eyelinecom.whoisd.sads2.apiai.test;
 
-import com.eyelinecom.whoisd.sads2.apiai.model.AiApi;
-import com.eyelinecom.whoisd.sads2.apiai.model.types.Entity;
-import com.eyelinecom.whoisd.sads2.apiai.model.types.Response;
+import com.eyelinecom.whoisd.sads2.apiai.AiApi;
+import com.eyelinecom.whoisd.sads2.apiai.model.Entity;
+import com.eyelinecom.whoisd.sads2.apiai.model.Response;
 import com.eyelinecom.whoisd.sads2.common.HttpDataLoader;
 import com.eyelinecom.whoisd.sads2.common.Loader;
-import org.apache.commons.io.FileUtils;
 
-import java.io.File;
 import java.util.*;
 
 /**

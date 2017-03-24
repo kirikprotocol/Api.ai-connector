@@ -1,8 +1,8 @@
 package com.eyelinecom.whoisd.sads2.apiai.test;
 
-import com.eyelinecom.whoisd.sads2.apiai.model.types.Request;
-import com.eyelinecom.whoisd.sads2.apiai.model.types.Response;
-import com.eyelinecom.whoisd.sads2.apiai.utils.MarshalUtils;
+import com.eyelinecom.whoisd.sads2.apiai.model.Request;
+import com.eyelinecom.whoisd.sads2.apiai.model.Response;
+import com.eyelinecom.whoisd.sads2.ai.utils.MarshalUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.sound.sampled.UnsupportedAudioFileException;

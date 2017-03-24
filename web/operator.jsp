@@ -1,15 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%><?xml version="1.0" encoding="UTF-8"?>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
-<%@ page import="com.eyelinecom.whoisd.sads2.apiai.utils.MarshalUtils" %>
+<%@ page import="com.eyelinecom.whoisd.sads2.ai.utils.MarshalUtils" %>
 <%@ page import="com.eyelinecom.whoisd.sads2.common.UrlUtils" %>
 <%@ page import="com.eyelinecom.whoisd.sads2.common.XMLUtils" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="com.eyelinecom.whoisd.sads2.common.Loader" %>
 <%@ page import="com.eyelinecom.whoisd.sads2.common.HttpDataLoader" %>
-<%@ page import="com.eyelinecom.whoisd.sads2.apiai.model.AiApi" %>
+<%@ page import="com.eyelinecom.whoisd.sads2.apiai.AiApi" %>
 <%@ page import="java.net.URLEncoder" %>
-<%@ page import="com.eyelinecom.whoisd.sads2.apiai.model.types.*" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.eyelinecom.whoisd.sads2.apiai.model.*" %>
 <page version="2.0">
     <%!
         Loader<Loader.Entity> loader = new HttpDataLoader();

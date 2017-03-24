@@ -1,9 +1,9 @@
-package com.eyelinecom.whoisd.sads2.apiai.model;
+package com.eyelinecom.whoisd.sads2.apiai;
 
-import com.eyelinecom.whoisd.sads2.apiai.model.types.Entities;
-import com.eyelinecom.whoisd.sads2.apiai.model.types.Entity;
-import com.eyelinecom.whoisd.sads2.apiai.model.types.Response;
-import com.eyelinecom.whoisd.sads2.apiai.utils.MarshalUtils;
+import com.eyelinecom.whoisd.sads2.apiai.model.Entities;
+import com.eyelinecom.whoisd.sads2.apiai.model.Entity;
+import com.eyelinecom.whoisd.sads2.apiai.model.Response;
+import com.eyelinecom.whoisd.sads2.ai.utils.MarshalUtils;
 import com.eyelinecom.whoisd.sads2.common.Loader;
 
 import java.util.HashMap;

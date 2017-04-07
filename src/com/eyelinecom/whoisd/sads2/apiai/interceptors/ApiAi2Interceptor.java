@@ -40,4 +40,9 @@ public class ApiAi2Interceptor extends AbstractAiInterceptor {
             return InitUtils.getString(CONF_API_AI_TOKEN, request.getServiceScenario().getAttributes());
         }
     }
+
+    @Override
+    protected boolean fireOnAnyPromt(SADSRequest request) {
+        return false;
+    }
 }

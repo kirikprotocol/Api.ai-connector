@@ -12,16 +12,34 @@
 %><%@ page import="com.eyelinecom.whoisd.sads2.apiai.model.*"
 %><%!
         private static Logger log = Logger.getLogger("helper.api.ai");
+        private final static String MINIAPPS_HOST = "api.miniapps.run";
+        private final static String PUSH_API = "https://"+MINIAPPS_HOST+"/push";
+        private final static Boolean RETURN_BACK_ON_FAIL = Boolean.TRUE;
+        private final static Boolean READ_SESSION_AI_RESPONSE = Boolean.FALSE;
+
         Loader<Loader.Entity> loader = new HttpDataLoader();
+
+    private void sendMessage(String userId, String service, String protocol, String message) throws Exception {
+        String pushUrl = UrlUtils.addParameter(PUSH_API, "user_id", userId);
+        pushUrl = UrlUtils.addParameter(pushUrl, "subscriber", userId);
+        pushUrl = UrlUtils.addParameter(pushUrl, "service", service);
+        pushUrl = UrlUtils.addParameter(pushUrl, "scenario", "push");
+        pushUrl = UrlUtils.addParameter(pushUrl, "protocol", protocol);
+        pushUrl = UrlUtils.addParameter(pushUrl, "message", message);
+        loader.load(pushUrl);
+    }
 
     %><%
         String subscriber = request.getParameter("user_id");
+        String service = request.getParameter("service");
+        String protocol = request.getParameter("protocol");
         String apiToken = request.getParameter("token");
         String query = request.getParameter("query");
         if (StringUtils.isEmpty(query)) {
             query = request.getParameter("event.text");
         }
-        String backPage = XMLUtils.forXML(request.getParameter("back_url"));
+        String backPageRaw = request.getParameter("back_url");
+        String backPage = XMLUtils.forXML(backPageRaw);
         String lang = request.getParameter("lang");
         if (StringUtils.isBlank(lang)) {
             lang = "en";
@@ -33,7 +51,13 @@
         if (StringUtils.isNotBlank(apiToken) && StringUtils.isNotBlank(query)) {
             AiApi api = new AiApi(loader, apiToken);
             try {
-                Response aiResponse = api.query(subscriber, query);
+                Response aiResponse;
+                if (!READ_SESSION_AI_RESPONSE) {
+                    aiResponse = api.query(subscriber, query);
+                    session.setAttribute("ai.response", aiResponse);
+                } else {
+                    aiResponse = (Response) session.getAttribute("ai.response");
+                }
                 Result result = aiResponse.getResult();
                 if (log.isInfoEnabled()) {
                     log.info(subscriber+" got api.ai raw response: "+aiResponse.getRaw());
@@ -58,12 +82,23 @@
                                     }
                                 }
                             }
+                            if (StringUtils.isNotBlank(answer)) {
+                                this.sendMessage(subscriber, service, protocol, answer);
+                            }
                             response.sendRedirect(redirectPage);
                             return;
                         }
                         String intentName = result.getMetadata().getIntentName();
+                        log.info("intent name: "+intentName);
                         if ("Default Fallback Intent".equals(intentName)) {
                             iAmUseless = true;
+                            if (RETURN_BACK_ON_FAIL) {
+                                if (StringUtils.isNotBlank(answer)) {
+                                    this.sendMessage(subscriber, service, protocol, answer);
+                                }
+                                response.sendRedirect(backPageRaw);
+                                return;
+                            }
                         }
                     } else {
                         iAmUseless = false;
@@ -103,7 +138,7 @@
         }
     %>
 <page version="2.0">
-    <% if (iAmUseless) { %>
+    <% if (iAmUseless && !RETURN_BACK_ON_FAIL) { %>
     <attributes>
         <attribute name="i-am-useless" value="<%=XMLUtils.forXML(query)%>"/>
     </attributes>

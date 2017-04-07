@@ -18,12 +18,15 @@ public abstract class AbstractAiInterceptor extends BlankInterceptor {
 
     protected static final String ATTR_TOKEN = "process.ai.token";
     protected static final String ATTR_BACKPAGE = "process.ai.page";
+    protected static final String PARAM_AI_DISABLED = "_ai_disabled";
 
     protected abstract boolean isPluginCall(SADSRequest request);
     protected abstract String buildPluginUrl(String query, SADSRequest request) throws Exception;
 
     protected abstract String getAiUrl(SADSRequest request) throws Exception;
     protected abstract String getToken(SADSRequest request) throws Exception;
+
+    protected abstract boolean fireOnAnyPromt(SADSRequest request);
 
     protected boolean isContinueDialog(SADSRequest request) {
         try {
@@ -35,12 +38,38 @@ public abstract class AbstractAiInterceptor extends BlankInterceptor {
 
     protected boolean isAiEnabled(SADSRequest request) {
         try{
+
+            String disableAi = request.getParameters().get(PARAM_AI_DISABLED);
+            if (StringUtils.isBlank(disableAi)) {
+                disableAi = UrlUtils.getParameter(request.getResourceURI(), PARAM_AI_DISABLED);
+                if (StringUtils.isNotBlank(disableAi)) {
+                    try {
+                        return Boolean.parseBoolean(disableAi);
+                    } catch (Exception e) {
+                        //skip
+                    }
+                }
+            }
             String url = getAiUrl(request);
             String token = getToken(request);
             return StringUtils.isNotBlank(url) && StringUtils.isNotBlank(token);
         } catch (Exception e) {
             return false;
         }
+    }
+
+    protected boolean isNeedToProcessPromt(SADSRequest request) {
+        if (!isCurrentAiFiredAttribute(request)) {
+            if (fireOnAnyPromt(request)) {
+                if ("message".equals(request.getParameters().get("event"))) {
+                    String eventText = request.getParameters().get("event.text");
+                    return StringUtils.isNotBlank(eventText) && !eventText.startsWith("/");
+                }
+            } else {
+                return request.getParameters().containsKey("bad_command");
+            }
+        }
+        return false;
     }
 
     protected void process(String query, String backPage, String token, SADSRequest request, Log log) {
@@ -67,13 +96,16 @@ public abstract class AbstractAiInterceptor extends BlankInterceptor {
                 if (StringUtils.isBlank(backUrl)){
                     backUrl = UrlUtils.getParameter("back_url", request.getResourceURI());
                 }
-                if (StringUtils.isBlank(backUrl)){
-                    backUrl = request.getParameters().get("event.referer");
+                String startPage;
+                try {
+                    startPage = InitUtils.getString("start-page", request.getServiceScenario().getAttributes());
+                } catch (Exception e) {
+                    throw new InterceptionException(e);
                 }
                 try {
-                    String startPage = InitUtils.getString("start-page", request.getServiceScenario().getAttributes());
                     backUrl = UrlUtils.merge(startPage, backUrl);
                 } catch (Exception e) {
+                    backUrl = startPage;
                     log.warn("",e);
                 }
                 request.getSession().setAttribute(ATTR_BACKPAGE, backUrl);
@@ -96,8 +128,8 @@ public abstract class AbstractAiInterceptor extends BlankInterceptor {
                     String backPage = (String) request.getSession().getAttribute(ATTR_BACKPAGE);
                     String token = (String) request.getSession().getAttribute(ATTR_TOKEN);
                     this.process(query, backPage, token, request, log);
-                } else if (request.getParameters().containsKey("bad_command")) {
-                    log.info("... it is start AI dialog by bad commnad");
+                } else if (isNeedToProcessPromt(request)) {
+                    log.info("... it is start AI dialog by text input (fire on any text = "+this.fireOnAnyPromt(request)+")");
                     String currentPage = request.getResourceURI();
                     currentPage = UrlUtils.removeParameter(currentPage,"bad_command");
                     currentPage = UrlUtils.removeParameter(currentPage,"subscriber");

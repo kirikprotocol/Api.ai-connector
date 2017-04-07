@@ -25,12 +25,12 @@ public class UnviversalAiInterceptor extends AbstractAiInterceptor implements In
     @Override
     protected boolean isPluginCall(SADSRequest request) {
         String url = request.getResourceURI();
-        return url.startsWith("https://miniapps.run/"+pluginName) || url.startsWith("http://miniapps.run/"+pluginName) ;
+        return url.startsWith("https://plugins.miniapps.run/"+pluginName) || url.startsWith("http://plugins.miniapps.run/"+pluginName) ;
     }
 
     @Override
     protected String buildPluginUrl(String query, SADSRequest request) throws Exception {
-        return "http://miniapps.run/"+pluginName;
+        return "http://plugins.miniapps.run/"+pluginName;
     }
 
     @Override
@@ -49,8 +49,12 @@ public class UnviversalAiInterceptor extends AbstractAiInterceptor implements In
     }
 
     @Override
+    protected boolean fireOnAnyPromt(SADSRequest request) {
+        return InitUtils.getBoolean("ai-fire-on-any-promt", true, request.getServiceScenario().getAttributes());
+    }
+
+    @Override
     public void destroy() {
 
     }
-
 }

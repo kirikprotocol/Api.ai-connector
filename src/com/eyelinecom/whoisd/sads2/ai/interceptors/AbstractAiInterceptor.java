@@ -36,6 +36,20 @@ public abstract class AbstractAiInterceptor extends BlankInterceptor {
         }
     }
 
+    protected boolean isHelpDeskDisabled(SADSRequest request) {
+      String requestURI =  request.getResourceURI();
+      boolean isAiPluginCall = requestURI.startsWith("http://plugins.miniapps.run/ai_apiai") || requestURI.startsWith("http://plugins.miniapps.run/ai_msqna");
+
+      if (isAiPluginCall)
+        return false;
+
+      Object helpDesk = request.getSession().getAttribute("helpdesk.module.disabled");
+      if (helpDesk == null)
+        return false;
+
+      return (Boolean) helpDesk;
+    }
+
     protected boolean isAiEnabled(SADSRequest request) {
         try{
 
@@ -52,6 +66,13 @@ public abstract class AbstractAiInterceptor extends BlankInterceptor {
             }
             String url = getAiUrl(request);
             String token = getToken(request);
+
+            if (isHelpDeskDisabled(request)) {
+              Log log = SADSLogger.getLogger(request.getServiceId(), request.getAbonent(), this.getClass());
+              log.info("HELP DESK DISABLED! NO API.AI CALL!");
+              return false;
+            }
+
             return StringUtils.isNotBlank(url) && StringUtils.isNotBlank(token);
         } catch (Exception e) {
             return false;

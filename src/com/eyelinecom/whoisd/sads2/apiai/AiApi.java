@@ -8,6 +8,7 @@ import com.eyelinecom.whoisd.sads2.common.Loader;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by jeck on 14/04/16.
@@ -38,6 +39,7 @@ public class AiApi {
     String json = new String(entity.getBuffer(), "utf-8");
     Response response = MarshalUtils.unmarshal(MarshalUtils.parse(json), Response.class);
     response.setRaw(json);
+
     return response;
   }
 /*

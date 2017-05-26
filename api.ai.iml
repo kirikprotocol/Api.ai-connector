@@ -2,7 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="IvyIDEA" name="IvyIDEA">
-      <configuration ivyFile="$MODULE_DIR$/ivy.xml" useProjectSettings="false" useCustomIvySettings="false" ivySettingsFile="" onlyResolveSelectedConfigs="false">
+      <configuration ivyFile="$MODULE_DIR$/ivy.xml" useProjectSettings="true" useCustomIvySettings="true" ivySettingsFile="" onlyResolveSelectedConfigs="false">
         <propertiesSettings>
           <propertiesFiles includeProjectLevelPropertiesFiles="true" />
         </propertiesSettings>
@@ -16,107 +16,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="core" />
-    <orderEntry type="module" module-name="Impl" />
-    <orderEntry type="module" module-name="Utils" />
-    <orderEntry type="module-library">
-      <library name="IvyIDEA">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-collections/commons-collections/jars/commons-collections-3.2.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-configuration/commons-configuration/jars/commons-configuration-1.4.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-lang/commons-lang/jars/commons-lang-2.3.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-logging/commons-logging-api/jars/commons-logging-api-1.0.4.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-digester/commons-digester/jars/commons-digester-1.8.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-beanutils/commons-beanutils/jars/commons-beanutils-1.7.0.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-beanutils/commons-beanutils-core/jars/commons-beanutils-core-1.7.0.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.3.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-jxpath/commons-jxpath/jars/commons-jxpath-1.2.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/ant/ant-optional/jars/ant-optional-1.5.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/xalan/xalan/jars/xalan-2.7.0.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-io/commons-io/jars/commons-io-1.4.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/logkit/logkit/jars/logkit-1.0.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/avalon-framework/avalon-framework/jars/avalon-framework-4.1.3.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-httpclient/commons-httpclient/jars/commons-httpclient-3.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/log4j/log4j/bundles/log4j-1.2.16.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/javax.mail/mail/jars/mail-1.4.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/javax.activation/activation/jars/activation-1.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.geronimo.specs/geronimo-jms_1.1_spec/jars/geronimo-jms_1.1_spec-1.0.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-1.3.9.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.mojo/animal-sniffer-annotations/jars/animal-sniffer-annotations-1.14.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/dom4j/dom4j/jars/dom4j-1.6.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/jaxme/jaxme-api/jars/jaxme-api-0.3.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/msv/xsdlib/jars/xsdlib-20030807.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/msv/relaxngDatatype/jars/relaxngDatatype-20030807.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/pull-parser/pull-parser/jars/pull-parser-2.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/xpp3/xpp3/jars/xpp3-1.1.3.3.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/stax/stax-api/jars/stax-api-1.0.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/jaxen/jaxen/bundles/jaxen-1.1.6.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/xml-apis/xml-apis/jars/xml-apis-1.3.02.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/xerces/xercesImpl/jars/xercesImpl-2.6.2.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/jdom/jdom/jars/jdom-1.0.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/xom/xom/jars/xom-1.0.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/xerces/xmlParserAPIs/jars/xmlParserAPIs-2.6.2.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.ibm.icu/icu4j/jars/icu4j-2.6.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/junit/junit/jars/junit-4.10.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.hamcrest/hamcrest-core/jars/hamcrest-core-1.1.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/javax.servlet/servlet-api/jars/servlet-api-2.5.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.7.2.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.7.2.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.7.2.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.guava/guava/bundles/guava-19.0.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.errorprone/error_prone_annotations/jars/error_prone_annotations-2.0.2.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.j2objc/j2objc-annotations/jars/j2objc-annotations-0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC>
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-collections/commons-collections/javadocs/commons-collections-3.2.1-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-beanutils/commons-beanutils/javadocs/commons-beanutils-1.7.0-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-codec/commons-codec/javadocs/commons-codec-1.3-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-io/commons-io/javadocs/commons-io-1.4-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-logging/commons-logging/javadocs/commons-logging-1.1.1-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/log4j/log4j/javadocs/log4j-1.2.16-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.mojo/animal-sniffer-annotations/javadocs/animal-sniffer-annotations-1.14-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/jaxen/jaxen/javadocs/jaxen-1.1.6-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/junit/junit/javadocs/junit-4.10-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/javadocs/jackson-core-2.7.2-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/javadocs/jackson-annotations-2.7.2-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/javadocs/jackson-databind-2.7.2-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.guava/guava/javadocs/guava-19.0-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.errorprone/error_prone_annotations/javadocs/error_prone_annotations-2.0.2-javadoc.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.j2objc/j2objc-annotations/javadocs/j2objc-annotations-0.1-javadoc.jar!/" />
-        </JAVADOC>
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-collections/commons-collections/sources/commons-collections-3.2.1-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-configuration/commons-configuration/sources/commons-configuration-1.4-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-lang/commons-lang/sources/commons-lang-2.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-digester/commons-digester/sources/commons-digester-1.8-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-beanutils/commons-beanutils/sources/commons-beanutils-1.7.0-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-codec/commons-codec/sources/commons-codec-1.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/xalan/xalan/sources/xalan-2.7.0-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-io/commons-io/sources/commons-io-1.4-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-logging/commons-logging/sources/commons-logging-1.1.1-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/logkit/logkit/sources/logkit-1.0.1-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/commons-httpclient/commons-httpclient/sources/commons-httpclient-3.1-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/log4j/log4j/sources/log4j-1.2.16-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/javax.mail/mail/sources/mail-1.4.1-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/javax.activation/activation/sources/activation-1.1-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.mojo/animal-sniffer-annotations/sources/animal-sniffer-annotations-1.14-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/dom4j/dom4j/sources/dom4j-1.6.1-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/jaxen/jaxen/sources/jaxen-1.1.6-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/xerces/xercesImpl/sources/xercesImpl-2.6.2-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/jdom/jdom/sources/jdom-1.0-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/junit/junit/sources/junit-4.10-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.hamcrest/hamcrest-core/sources/hamcrest-core-1.1-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/javax.servlet/servlet-api/sources/servlet-api-2.5-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/sources/jackson-core-2.7.2-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/sources/jackson-annotations-2.7.2-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/sources/jackson-databind-2.7.2-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.guava/guava/sources/guava-19.0-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.errorprone/error_prone_annotations/sources/error_prone_annotations-2.0.2-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.j2objc/j2objc-annotations/sources/j2objc-annotations-0.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
+  </component>
+  <component name="sonarModuleSettings">
+    <option name="localAnalysisScripName" value="&lt;PROJECT&gt;" />
+    <option name="serverName" value="&lt;PROJECT&gt;" />
   </component>
   <component name="sonarModuleSettings">
     <option name="localAnalysisScripName" value="&lt;PROJECT&gt;" />
